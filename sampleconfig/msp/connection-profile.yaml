@@ -1,0 +1,38 @@
+---
+name: test-network-org1
+version: 1.0.0
+client:
+  organization: Org1
+channels:
+  ch1:
+    orderers:
+      - orderer.example.com
+    peers:
+      peer0.org1.example.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+        discovery: false
+organizations:
+  Org1:
+    mspid: SampleOrg
+    peers:
+      - peer0.org1.example.com
+
+orderers:
+  orderer.example.com:
+    url: grpc://orderer:7050
+    grpcOptions:
+      ssl-target-name-override: orderer.example.com
+      hostnameOverride: orderer.example.com
+
+peers:
+  peer0.org1.example.com:
+    url: grpc://peer:7051
+
+    grpcOptions:
+      ssl-target-name-override: peer0.org1.example.com
+      hostnameOverride: peer0.org1.example.com
+
+
